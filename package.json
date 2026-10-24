@@ -1,0 +1,15 @@
+{
+  "name": "djphatalbert",
+  "version": "1.0.0",
+  "description": "DJ Phat Albert website",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./theme/static/css/main.css -o ./theme/static/css/style.css",
+    "watch:css": "npx @tailwindcss/cli -i ./theme/static/css/main.css -o ./theme/static/css/style.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "tailwindcss": "^4.2.1"
+  }
+}

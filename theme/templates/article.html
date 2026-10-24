@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} | {{ SITENAME }}{% endblock title %}
+
+{% block content %}
+<article class="max-w-3xl mx-auto">
+  <header class="mb-10 text-center">
+    <div class="flex items-center justify-center gap-x-4 text-xs text-stone-400 mb-3">
+      <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+      {% if article.category %}
+      <span class="rounded-full bg-stone-800 px-3 py-1 font-medium text-stone-300">{{ article.category }}</span>
+      {% endif %}
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+      {{ article.title }}
+    </h1>
+    {% if article.author %}
+    <p class="text-sm text-stone-400">By {{ article.author }}</p>
+    {% endif %}
+  </header>
+
+  <div class="prose prose-invert prose-stone max-w-none text-stone-200 leading-relaxed">
+    {{ article.content }}
+  </div>
+
+  {% if article.tags %}
+  <footer class="mt-12 pt-6 border-t border-stone-800 flex items-center gap-2 flex-wrap">
+    <span class="text-xs text-stone-400 font-medium">Tags:</span>
+    {% for tag in article.tags %}
+    <a href="{{ SITEURL }}/{{ tag.url }}" class="text-xs rounded-md bg-stone-800 hover:bg-stone-700 text-stone-300 px-2.5 py-1 transition-colors">#{{ tag }}</a>
+    {% endfor %}
+  </footer>
+  {% endif %}
+</article>
+{% endblock content %}

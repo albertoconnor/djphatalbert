@@ -1,0 +1,16 @@
+{% if articles_page and articles_paginator.num_pages > 1 %}
+<nav class="flex items-center justify-between border-t border-stone-800 pt-8" aria-label="Pagination">
+  <div class="flex flex-1 justify-between sm:justify-end gap-3">
+    {% if articles_page.has_previous() %}
+    <a href="{{ SITEURL }}/{{ articles_previous_page.url }}" class="rounded-lg border border-stone-700 bg-stone-900 px-4 py-2 text-sm font-medium text-stone-200 hover:bg-stone-800 transition-colors">
+      &larr; Previous
+    </a>
+    {% endif %}
+    {% if articles_page.has_next() %}
+    <a href="{{ SITEURL }}/{{ articles_next_page.url }}" class="rounded-lg border border-stone-700 bg-stone-900 px-4 py-2 text-sm font-medium text-stone-200 hover:bg-stone-800 transition-colors">
+      Next &rarr;
+    </a>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}

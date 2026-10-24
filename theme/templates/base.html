@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}" class="h-full bg-stone-950 text-stone-100 antialiased">
+<head>
+  {% block head %}
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+  {% endif %}
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css">
+  {% endblock head %}
+</head>
+
+<body class="min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black">
+  <header class="w-full border-b border-stone-800 bg-stone-900/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 max-w-5xl flex justify-between items-center">
+      <a href="{{ SITEURL }}/" class="text-xl font-bold tracking-tight text-white hover:text-amber-400 transition-colors">
+        {{ SITENAME }}
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium text-stone-300">
+        {% for p in pages %}
+        <a href="{{ SITEURL }}/{{ p.url }}" class="hover:text-amber-400 transition-colors">{{ p.title }}</a>
+        {% endfor %}
+        <a href="{{ SITEURL }}/archives.html" class="hover:text-amber-400 transition-colors">Archives</a>
+      </nav>
+    </div>
+  </header>
+
+  {% block precontent %}
+  {% endblock precontent %}
+
+  <main class="container mx-auto px-6 py-12 flex-1 w-full max-w-5xl">
+    {% block content %}
+    {% endblock content %}
+  </main>
+
+  <footer class="w-full border-t border-stone-800 bg-stone-900/50 py-8 text-center text-sm text-stone-500">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <p>&copy; {{ AUTHOR }}. Powered by <a href="https://getpelican.com/" class="underline hover:text-stone-300">Pelican</a> and <a href="https://tailwindcss.com/" class="underline hover:text-stone-300">Tailwind CSS</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
