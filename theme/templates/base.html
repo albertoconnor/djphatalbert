@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ DEFAULT_LANG }}" class="h-full bg-stone-950 text-stone-100 antialiased">
+<html lang="{{ DEFAULT_LANG }}" class="h-full bg-stone-950 text-stone-100 antialiased scroll-smooth">
 <head>
   {% block head %}
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
@@ -14,31 +14,37 @@
 </head>
 
 <body class="min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black">
-  <header class="w-full border-b border-stone-800 bg-stone-900/80 backdrop-blur-md sticky top-0 z-50">
-    <div class="container mx-auto px-6 py-4 max-w-5xl flex justify-between items-center">
-      <a href="{{ SITEURL }}/" class="text-xl font-bold tracking-tight text-white hover:text-amber-400 transition-colors">
+  <header class="w-full border-b border-stone-800/80 bg-stone-950/85 backdrop-blur-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 max-w-6xl flex justify-between items-center">
+      <a href="{{ SITEURL }}/" class="text-xl font-extrabold tracking-wider uppercase text-white hover:text-amber-400 transition-colors">
         {{ SITENAME }}
       </a>
       <nav class="flex items-center gap-6 text-sm font-medium text-stone-300">
-        {% for p in pages %}
-        <a href="{{ SITEURL }}/{{ p.url }}" class="hover:text-amber-400 transition-colors">{{ p.title }}</a>
-        {% endfor %}
-        <a href="{{ SITEURL }}/archives.html" class="hover:text-amber-400 transition-colors">Archives</a>
+        <a href="#experience" class="hover:text-amber-400 transition-colors hidden sm:block">DJ Experience</a>
+        <a href="#booking" class="hover:text-amber-400 transition-colors hidden sm:block">DJ Booking</a>
+        {% if articles %}
+        <a href="#mixes" class="hover:text-amber-400 transition-colors hidden sm:block">Mixes</a>
+        {% endif %}
+        <a href="#contact" class="rounded-full bg-amber-500 px-4 py-1.5 text-xs font-bold text-stone-950 hover:bg-amber-400 transition-colors">
+          Get in Touch
+        </a>
       </nav>
     </div>
   </header>
 
-  {% block precontent %}
-  {% endblock precontent %}
-
-  <main class="container mx-auto px-6 py-12 flex-1 w-full max-w-5xl">
+  <main class="flex-1 w-full">
     {% block content %}
     {% endblock content %}
   </main>
 
-  <footer class="w-full border-t border-stone-800 bg-stone-900/50 py-8 text-center text-sm text-stone-500">
-    <div class="container mx-auto px-6 max-w-5xl">
-      <p>&copy; {{ AUTHOR }}. Powered by <a href="https://getpelican.com/" class="underline hover:text-stone-300">Pelican</a> and <a href="https://tailwindcss.com/" class="underline hover:text-stone-300">Tailwind CSS</a>.</p>
+  <footer class="w-full border-t border-stone-800/80 bg-stone-950 py-10 text-center text-sm text-stone-500">
+    <div class="container mx-auto px-6 max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>&copy; {{ AUTHOR }}. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="#experience" class="hover:text-stone-300 transition-colors">Experience</a>
+        <a href="#booking" class="hover:text-stone-300 transition-colors">Booking</a>
+        <a href="#contact" class="hover:text-stone-300 transition-colors">Contact</a>
+      </div>
     </div>
   </footer>
 </body>
